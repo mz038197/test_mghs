@@ -6,13 +6,20 @@ load_dotenv()
 
 
 def main():
-    agent_name = "法鬥超人"
-    welcome_message = f"歡迎!我是{agent_name},請問有什麼可以幫你的嗎?"
-    print(welcome_message)
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    if not api_key:
+        print("OPENAI_API_KEY is not set")
+        return
+
+    llm = ChatOpenAI(
+        model="gpt-4o-mini",
+        api_key=api_key,
+    )
+
+    response = llm.invoke("你好,你好嗎?")
+    print(response.content)
 
 
 if __name__ == "__main__":
     main()
-
-
-
