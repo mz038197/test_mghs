@@ -1,8 +1,8 @@
 """
-Agent Workshop WG-22 CLI 入口。
+Agent Workshop 標準 CLI（reference_main.py）— peas-workshop-advanced-coach 內唯讀對照。
 
-本檔只處理終端互動、離開指令與 /image 解析；Agent 核心邏輯在
-agent_core.py。
+對應專案根 `main.py`（`uv run main.py`）；WG-22 拆檔後標準答案。
+僅 CLI 殼層；核心邏輯對照 `reference_agent_core.py`。學生實作勿直接修改本檔。
 """
 
 from __future__ import annotations
