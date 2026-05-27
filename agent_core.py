@@ -1,8 +1,7 @@
-"""
-Agent Workshop WG-22 核心模組。
+"""WG-22 Agent core.
 
-本檔放置 WG-12～21 的 Agent 執行邏輯，並以 Agent.chat() 對外提供
-單輪對話入口；終端 input/print 迴圈留在 main.py。
+This module owns the WG-12 through WG-21 execution logic and exposes the
+public API used by CLI or other shells: `Agent.from_env()` and `Agent.chat(...)`.
 """
 
 from __future__ import annotations
@@ -538,12 +537,12 @@ def _keep_image_only_on_current_human(messages: list[BaseMessage]) -> list[BaseM
 
 
 def get_token_budget() -> int:
-    raw = os.getenv("TOKEN_BUDGET", "100000")
+    raw = os.getenv("TOKEN_BUDGET", "200000")
     try:
         n = int(raw)
-        return n if n > 0 else 100000
+        return n if n > 0 else 200000
     except ValueError:
-        return 100000
+        return 200000
 
 
 def estimate_message_tokens(message: BaseMessage) -> int:
@@ -1117,7 +1116,7 @@ class Agent:
             if session_meta
             else 0
         )
-        llm = ChatOpenAI(model="gpt-5.4-mini", temperature=0.2)
+        llm = ChatOpenAI(model="gpt-5.4", temperature=0.2)
         llm_tools = llm.bind_tools(TOOLS)
         return cls(
             session_path=resolved_path,

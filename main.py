@@ -1,8 +1,7 @@
-"""
-Agent Workshop WG-22 CLI 入口。
+"""WG-22 CLI entry point.
 
-本檔只處理終端互動、離開指令與 /image 解析；Agent 核心邏輯在
-agent_core.py。
+This file keeps terminal input/output concerns only. Agent logic lives in
+`agent_core.py` and is accessed through `Agent.chat(...)`.
 """
 
 from __future__ import annotations
